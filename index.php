@@ -4,6 +4,18 @@ session_start();
 require __DIR__ . '/config/database.php';
 require __DIR__ . '/functions/helper.php';
 
+function mempelai_photo_url(?string $path): string
+{
+    if (!$path) {
+        return '';
+    }
+    if (str_starts_with($path, 'http://') || str_starts_with($path, 'https://')) {
+        return $path;
+    }
+    $config = require __DIR__ . '/config/config.php';
+    return is_file($config['upload_dir'] . '/' . $path) ? upload_url($path) : '';
+}
+
 $pdo = db();
 $settings = $pdo->query('SELECT * FROM settings WHERE id=1 LIMIT 1')->fetch() ?: [];
 if (($settings['status'] ?? 'published') === 'draft' && empty($_SESSION['admin_id'])) {
@@ -36,8 +48,8 @@ $calendarUrl = 'https://www.google.com/calendar/render?action=TEMPLATE&text=' . 
 $parentsWoman = 'Bapak ' . ($woman['ayah'] ?? '') . ' dan Ibu ' . ($woman['ibu'] ?? '');
 $parentsMan = 'Bapak ' . ($man['ayah'] ?? '') . ' dan Ibu ' . ($man['ibu'] ?? '');
 $cover = public_image($settings['cover_image'] ?? '');
-$womanPhoto = public_image($woman['foto'] ?? '');
-$manPhoto = public_image($man['foto'] ?? '');
+$womanPhoto = mempelai_photo_url($woman['foto'] ?? null);
+$manPhoto = mempelai_photo_url($man['foto'] ?? null);
 $months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
 
 $html = file_get_contents(__DIR__ . '/template/art55-template.html');
@@ -59,6 +71,8 @@ $html = strtr($html, [
     '<h2 class="elementor-heading-title elementor-size-default">Tamu Undangan</h2>' => '<h2 class="elementor-heading-title elementor-size-default">' . e($guest) . '</h2>',
     '<p class="elementor-heading-title elementor-size-default">Tamu Undangan</p>' => '<p class="elementor-heading-title elementor-size-default">' . e($guest) . '</p>',
 ]);
+$html = preg_replace('~(<h2(?=[^>]*data-couple-name="woman")[^>]*>).*?(</h2>)~', '$1' . e($wnick) . '$2', $html, 1);
+$html = preg_replace('~(<h2(?=[^>]*data-couple-name="man")[^>]*>).*?(</h2>)~', '$1' . e($mnick) . '$2', $html, 1);
 $html = str_replace('data-date="1829955600"', 'data-date="' . $countdownTimestamp . '"', $html);
 $html = preg_replace('~href="https://www\.google\.com/calendar/render[^\"]*"~', 'href="' . e($calendarUrl) . '"', $html, 1);
 
@@ -79,8 +93,57 @@ if ($cover) {
     $html = str_replace('https://the.invisimple.id/wp-content/uploads/2026/06/Cover-Jawa-Biru-.jpg', e($cover), $html);
     $html = str_replace('https://the.invisimple.id/wp-content/uploads/2026/06/Fallback-Jawa-Biru-.jpg', e($cover), $html);
 }
-if ($womanPhoto) $html = preg_replace('~https://the\.invisimple\.id/wp-content/uploads/2024/10/05\.png~', e($womanPhoto), $html, 1);
-if ($manPhoto) $html = preg_replace('~https://the\.invisimple\.id/wp-content/uploads/2024/10/05\.png~', e($manPhoto), $html, 1);
+if ($womanPhoto) {
+    $html = preg_replace('~(<img(?=[^>]*data-couple-photo="woman")[^>]*\bsrc=")[^"]*~', '$1' . e($womanPhoto), $html, 1);
+}
+if ($manPhoto && !str_contains($html, 'data-couple-photo="man"')) {
+    $manSlideshow = [
+        'background_background' => 'slideshow',
+        'background_slideshow_slide_duration' => 1000,
+        'background_slideshow_transition_duration' => 3000,
+        'background_slideshow_gallery' => [['id' => 0, 'url' => $manPhoto]],
+        'background_slideshow_loop' => 'yes',
+        'background_slideshow_slide_transition' => 'fade',
+    ];
+    $html = preg_replace_callback(
+        '~<div(?=[^>]*data-couple-photo=\"man\")[^>]*data-settings=\"[^\"]*~',
+        static function (array $match) use ($manSlideshow): string {
+            return preg_replace(
+                '~data-settings=\"[^\"]*~',
+                'data-settings=\"' . e(json_encode($manSlideshow, JSON_UNESCAPED_SLASHES)),
+                $match[0],
+                1
+            );
+        },
+        $html,
+        1
+    );
+    $html = preg_replace('~(<img(?=[^>]*data-couple-photo="man")[^>]*\bsrc=")[^"]*~', '$1' . e($manPhoto), $html, 1);
+}
+
+$profilePhotos = ['woman' => $womanPhoto, 'man' => $manPhoto];
+foreach ($profilePhotos as $person => $photo) {
+    if (!$photo) {
+        continue;
+    }
+    $slideshow = [
+        'background_background' => 'slideshow',
+        'background_slideshow_slide_duration' => 1000,
+        'background_slideshow_transition_duration' => 3000,
+        'background_slideshow_gallery' => [['id' => 0, 'url' => $photo]],
+        'background_slideshow_loop' => 'yes',
+        'background_slideshow_slide_transition' => 'fade',
+    ];
+    $settings = e(json_encode($slideshow, JSON_UNESCAPED_SLASHES));
+    $html = preg_replace_callback(
+        '~<div(?=[^>]*data-couple-photo="' . $person . '")[^>]*\\bdata-settings="[^"]*~',
+        static function (array $match) use ($settings): string {
+            return preg_replace('~data-settings="[^"]*~', 'data-settings="' . $settings, $match[0], 1);
+        },
+        $html,
+        1
+    );
+}
 
 $data = [
     'stories' => $stories,
