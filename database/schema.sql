@@ -1,5 +1,3 @@
-CREATE DATABASE IF NOT EXISTS undangan CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE undangan;
 
 DROP TABLE IF EXISTS guestbook, gallery, rekening, love_story, acara, mempelai, settings, admin_users;
 

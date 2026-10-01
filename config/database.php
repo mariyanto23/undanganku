@@ -3,7 +3,7 @@ $config = require __DIR__ . '/config.php';
 date_default_timezone_set($config['timezone']);
 
 $host = getenv('DB_HOST') ?: '127.0.0.1';
-$db   = getenv('DB_NAME') ?: 'undangan';
+$db   = getenv('DB_NAME') ?: 'dianari';
 $user = getenv('DB_USER') ?: 'root';
 $pass = getenv('DB_PASS') ?: '';
 $port = getenv('DB_PORT') ?: '3306';
