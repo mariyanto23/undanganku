@@ -50,6 +50,7 @@ $parentsMan = 'Bapak ' . ($man['ayah'] ?? '') . ' dan Ibu ' . ($man['ibu'] ?? ''
 $cover = public_image($settings['cover_image'] ?? '');
 $womanPhoto = mempelai_photo_url($woman['foto'] ?? null);
 $manPhoto = mempelai_photo_url($man['foto'] ?? null);
+$couplePhoto = mempelai_photo_url($settings['couple_photo'] ?? null);
 $months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
 
 $html = file_get_contents(__DIR__ . '/template/art55-template.html');
@@ -121,7 +122,7 @@ if ($manPhoto && !str_contains($html, 'data-couple-photo="man"')) {
     $html = preg_replace('~(<img(?=[^>]*data-couple-photo="man")[^>]*\bsrc=")[^"]*~', '$1' . e($manPhoto), $html, 1);
 }
 
-$profilePhotos = ['woman' => $womanPhoto, 'man' => $manPhoto];
+$profilePhotos = ['couple' => $couplePhoto, 'woman' => $womanPhoto, 'man' => $manPhoto];
 foreach ($profilePhotos as $person => $photo) {
     if (!$photo) {
         continue;
@@ -134,6 +135,10 @@ foreach ($profilePhotos as $person => $photo) {
         'background_slideshow_loop' => 'yes',
         'background_slideshow_slide_transition' => 'fade',
     ];
+    if ($person === 'couple') {
+        $slideshow['background_slideshow_ken_burns'] = 'yes';
+        $slideshow['background_slideshow_ken_burns_zoom_direction'] = 'in';
+    }
     $settings = e(json_encode($slideshow, JSON_UNESCAPED_SLASHES));
     $html = preg_replace_callback(
         '~<div(?=[^>]*data-couple-photo="' . $person . '")[^>]*\\bdata-settings="[^"]*~',
