@@ -1,2 +1,229 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Infant:wght@400;500;600;700&family=Pinyon+Script&family=Roboto:wght@300;400;500;600&display=swap');
 :root{--blue:#032262;--blue2:#6481a6;--ink:#333;--paper:#fff;--soft:#edf2f8;--script:'Pinyon Script',cursive;--serif:'Cormorant Infant',serif;--sans:'Roboto',sans-serif}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#0d1623;color:var(--ink);font-family:var(--sans);font-weight:400}.inv{max-width:760px;margin:auto;background:#fff;overflow:hidden;box-shadow:0 0 45px #0005}.section{position:relative;padding:80px 28px;text-align:center;overflow:hidden}.section.blue{background:var(--blue);color:#fff}.section.soft{background:#f5f7fa}.ornament{position:absolute;inset:auto -70px -80px;width:240px;opacity:.3;pointer-events:none}.cover{min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(#0002,#0005),url('../images/Cover-Jawa-Biru-.jpg') center/cover fixed;color:#fff}.cover-inner{padding:40px 22px;text-align:center;max-width:520px}.eyebrow,.smallcaps{letter-spacing:.2em;text-transform:uppercase;font-size:12px}.script{font-family:var(--script)}.cover h1{font-family:var(--serif);font-size:clamp(50px,12vw,90px);line-height:.9;margin:18px 0}.cover .date{font-family:var(--serif);font-size:24px;letter-spacing:.18em}.guest-box{margin:32px auto 0;padding:22px 25px;background:#ffffffdf;color:#333;max-width:340px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:999px;padding:12px 22px;background:var(--blue);color:#fff;text-decoration:none;cursor:pointer;font:inherit}.btn.light{background:#fff;color:var(--blue)}.btn.outline{background:transparent;border:1px solid currentColor}.hero{background:#fff url('../images/Design-Jawa-Biru-.jpg') center/cover}.monogram{font-family:var(--serif);font-size:76px;color:var(--blue);display:flex;justify-content:center;gap:20px;align-items:center}.quote{font-family:var(--serif);font-size:22px;line-height:1.5;max-width:600px;margin:30px auto}.quote-source{font-size:13px;letter-spacing:.08em}.section-title{font-family:var(--serif);font-size:42px;margin:0 0 16px;color:var(--blue)}.section.blue .section-title{color:#fff}.intro{max-width:580px;margin:0 auto;line-height:1.8}.couple{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:620px;margin:35px auto 0}.person{padding:25px;background:#fff;border:1px solid #dfe5ec}.person img{width:160px;height:160px;border-radius:50%;object-fit:cover;border:7px solid #eef3f8}.person h3{font-family:var(--serif);font-size:32px;color:var(--blue);margin:15px 0 5px}.person p{margin:5px 0;line-height:1.6}.countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:600px;margin:25px auto}.count{background:#ffffff18;border:1px solid #ffffff40;padding:15px}.count strong{font:38px var(--serif);display:block}.events{display:grid;gap:24px;max-width:620px;margin:30px auto}.event{background:#fff;padding:30px;border:1px solid #dfe5ec}.event h3{font:36px var(--serif);color:var(--blue);margin:0}.event .day{font-size:14px;letter-spacing:.15em;text-transform:uppercase}.event .num{font:70px var(--serif);color:var(--blue);line-height:1}.event p{line-height:1.7}.palette{display:flex;justify-content:center;gap:10px;margin:25px}.swatch{width:42px;height:42px;border-radius:50%;border:3px solid #fff;box-shadow:0 2px 10px #0002}.timeline{max-width:620px;margin:auto;text-align:left}.story{border-left:2px solid var(--blue);padding:0 0 35px 28px;margin-left:8px;position:relative}.story:before{content:'';position:absolute;width:12px;height:12px;border-radius:50%;background:var(--blue);left:-7px;top:4px}.story .date{font-weight:600;color:var(--blue);letter-spacing:.08em}.gift-grid{display:grid;gap:14px;max-width:620px;margin:25px auto}.gift{background:#fff;border:1px solid #dfe5ec;padding:22px;text-align:left}.gift strong{font-size:18px;color:var(--blue)}.gift .number{font-size:24px;letter-spacing:.08em;margin:10px 0}.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:620px;margin:25px auto}.gallery img{width:100%;aspect-ratio:1;object-fit:cover;cursor:pointer}.rsvp{max-width:620px;margin:auto}.form{display:grid;gap:12px}.form input,.form textarea,.form select{width:100%;padding:13px 15px;border:1px solid #ccd5df;background:#fff;font:inherit}.form textarea{min-height:100px}.attendance{display:flex;gap:8px}.attendance label{flex:1}.attendance input{display:none}.attendance span{display:block;border:1px solid #ccd5df;padding:12px;text-align:center;cursor:pointer}.attendance input:checked+span{background:var(--blue);color:#fff;border-color:var(--blue)}.comments{margin-top:35px;display:grid;gap:12px;text-align:left}.comment{background:#fff;border:1px solid #e1e5ea;padding:15px}.comment small{color:#777}.footer{background:#032262;color:#fff;text-align:center;padding:70px 25px}.music-btn{position:fixed;right:20px;bottom:20px;width:50px;height:50px;border-radius:50%;border:0;background:var(--blue);color:#fff;z-index:30;box-shadow:0 5px 18px #0003}.admin-wrap{max-width:1200px;margin:30px auto;padding:0 20px}.admin-nav{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:25px}.admin-card{background:#fff;border:1px solid #e4e7eb;padding:20px;border-radius:12px}.table{width:100%;border-collapse:collapse}.table th,.table td{padding:10px;border-bottom:1px solid #eee;text-align:left}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:15px}.field{display:grid;gap:6px}.field input,.field textarea,.field select{padding:10px;border:1px solid #ccd5df;border-radius:7px;font:inherit}.field textarea{min-height:120px}.danger{color:#b42318}.topbar{background:#032262;color:#fff;padding:16px 22px;display:flex;justify-content:space-between;align-items:center}.login{min-height:100vh;display:grid;place-items:center;background:#f2f5f8}.login-card{width:min(420px,calc(100% - 30px));background:#fff;padding:30px;border-radius:14px;box-shadow:0 15px 50px #0001}@media(max-width:700px){.couple,.grid2{grid-template-columns:1fr}.countdown{grid-template-columns:repeat(2,1fr)}.gallery{grid-template-columns:repeat(2,1fr)}.section{padding:65px 18px}.cover{background-attachment:scroll}}
+
+/* RSVP Admin Responsive */
+.admin-card-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+}
+
+.admin-card-heading h1 {
+    margin: 0;
+    color: var(--blue);
+    font-family: var(--serif);
+    font-size: 32px;
+}
+
+.admin-card-heading > span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: var(--soft);
+    color: var(--blue);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border: 1px solid #e4e7eb;
+    border-radius: 10px;
+}
+
+.rsvp-table {
+    min-width: 760px;
+}
+
+.rsvp-table th {
+    background: #f7f9fb;
+    color: var(--blue);
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.rsvp-table td {
+    vertical-align: top;
+    line-height: 1.5;
+}
+
+.rsvp-table td:nth-child(1) {
+    min-width: 130px;
+    font-weight: 600;
+}
+
+.rsvp-table td:nth-child(2) {
+    min-width: 260px;
+    white-space: pre-line;
+    overflow-wrap: anywhere;
+}
+
+.rsvp-table td:nth-child(3),
+.rsvp-table td:nth-child(5) {
+    white-space: nowrap;
+}
+
+.rsvp-table td:nth-child(4) {
+    text-align: center;
+}
+
+.rsvp-table td:nth-child(5) {
+    color: #667085;
+    font-size: 13px;
+}
+
+.delete-rsvp-form {
+    margin: 0;
+}
+
+.danger-btn {
+    background: #b42318;
+    padding: 8px 14px;
+    font-size: 13px;
+}
+
+.admin-empty {
+    margin: 0;
+    padding: 30px 10px;
+    text-align: center;
+    color: #667085;
+}
+
+
+/* =========================
+   MOBILE RSVP
+   ========================= */
+
+@media (max-width: 700px) {
+
+    .admin-wrap {
+        margin: 18px auto;
+        padding: 0 12px;
+    }
+
+    .admin-card {
+        padding: 14px;
+        border-radius: 10px;
+    }
+
+    .admin-card-heading {
+        align-items: flex-start;
+        margin-bottom: 14px;
+    }
+
+    .admin-card-heading h1 {
+        font-size: 28px;
+    }
+
+    .table-responsive {
+        border: 0;
+        overflow: visible;
+    }
+
+    .rsvp-table {
+        min-width: 0;
+        border-collapse: separate;
+        border-spacing: 0;
+        width: 100%;
+    }
+
+    .rsvp-table thead {
+        display: none;
+    }
+
+    .rsvp-table tbody,
+    .rsvp-table tr,
+    .rsvp-table td {
+        display: block;
+        width: 100%;
+    }
+
+    .rsvp-table tbody {
+        display: grid;
+        gap: 12px;
+    }
+
+    .rsvp-table tr {
+        background: #fff;
+        border: 1px solid #e4e7eb;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px #0000000a;
+    }
+
+    .rsvp-table td {
+        display: grid;
+        grid-template-columns: 88px minmax(0, 1fr);
+        gap: 10px;
+        padding: 10px 12px;
+        border-bottom: 1px solid #eef0f2;
+        text-align: left !important;
+        min-width: 0 !important;
+        white-space: normal !important;
+        font-size: 14px;
+    }
+
+    .rsvp-table td:last-child {
+        border-bottom: 0;
+    }
+
+    .rsvp-table td::before {
+        content: attr(data-label);
+        color: #667085;
+        font-weight: 600;
+    }
+
+    .rsvp-table td[data-label="Nama"] {
+        font-weight: 600;
+        color: var(--blue);
+    }
+
+    .rsvp-table td[data-label="Ucapan"] {
+        white-space: pre-line !important;
+        overflow-wrap: anywhere;
+    }
+
+    .rsvp-table td[data-label="Kehadiran"] {
+        color: var(--blue);
+        font-weight: 500;
+    }
+
+    .rsvp-table td[data-label="Aksi"] {
+        display: block;
+        padding: 12px;
+    }
+
+    .rsvp-table td[data-label="Aksi"]::before {
+        display: none;
+    }
+
+    .delete-rsvp-form,
+    .delete-rsvp-form .btn {
+        width: 100%;
+    }
+
+    .delete-rsvp-form .btn {
+        padding: 10px 14px;
+    }
+
+    .topbar {
+        padding: 12px 14px;
+    }
+
+    .admin-nav {
+        gap: 7px;
+        margin-bottom: 16px;
+    }
+
+    .admin-nav .btn {
+        padding: 9px 13px;
+        font-size: 13px;
+    }
+}
